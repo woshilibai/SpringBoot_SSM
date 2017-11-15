@@ -36,6 +36,21 @@ public class IndexController {
 		return "ok!!!!";
 	}
 	
+	@ResponseBody
+	@RequestMapping("/addUserTransaction") //添加事务管理
+	public String addUserTransaction(@RequestParam("name")String username, @RequestParam("age")Integer age){
+		User user = new User(username, age);
+		userService.addUserTransaction(user);
+		return "ok!!!!";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/exceptionTest")
+	public String exceptionTest(){
+		int i = 1/0;
+		return "success";
+	}
+	
 //	public static void main(String[] args) {
 //		SpringApplication.run(IndexController.class, args);
 //	}

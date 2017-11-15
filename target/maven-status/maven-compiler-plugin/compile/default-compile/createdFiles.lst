@@ -1,0 +1,9 @@
+com\ifunyoung\aop\WebReqLogAspect.class
+com\ifunyoung\exceptionHandler\GlobalExceptionHandler.class
+com\ifunyoung\app\AppStarter.class
+com\ifunyoung\job\ScheduerJob.class
+com\ifunyoung\service\UserServiceImpl.class
+com\ifunyoung\service\UserService.class
+com\ifunyoung\controller\IndexController.class
+com\ifunyoung\model\User.class
+com\ifunyoung\dao\UserMapper.class

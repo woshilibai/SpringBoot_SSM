@@ -1,0 +1,17 @@
+#应用port以及访问上下文配置
+server: 
+  port: 8080
+  context-path: /ifun
+
+#注入数据源配置
+spring: 
+  datasource:
+    name: test
+    url: jdbc:mysql:///test?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+ 
+#mybatis配置
+mybatis:
+  mapperLocations: classpath*:mybatis/*.xml
+  typeAliasesPackage: com.ifunyoung
