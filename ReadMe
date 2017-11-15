@@ -47,6 +47,12 @@ springboot集成jsp注意事项（因为打包方式不同，这个demo没有演
 
 ==================================================================================================================
 
-springboot继承事务管理步骤：
+springboot集成事务管理步骤：
 在service的业务方法上，添加 @Transactional 即可进行事务控制。
 多数据源的事务管理，暂不做集成。
+
+==============================================================================================================================
+
+springboot集成ehcache报错，错误信息如下：
+No CacheResolver specified, and no bean of type CacheManager found. Register a CacheManager bean or remove the @EnableCaching annotation from your configuration.
+暂时未解决，待解决。
