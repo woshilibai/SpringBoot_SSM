@@ -25,10 +25,10 @@
   		<artifactId>spring-boot-starter-web</artifactId>
   	</dependency>
   	<!-- spring boot jdbc -->
-  	<dependency>
+  	<!-- <dependency>
   		<groupId>org.springframework.boot</groupId>
   		<artifactId>spring-boot-starter-jdbc</artifactId>
-  	</dependency>
+  	</dependency> -->
   	<!-- spring boot aop -->
   	<dependency>
   		<groupId>org.springframework.boot</groupId>

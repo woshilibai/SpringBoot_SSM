@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 @EnableAutoConfiguration //spring boot 启动总开关注解
-@ComponentScan(basePackages={"com.ifunyoung.controller","com.ifunyoung.service"}) //扫描包路径
+@ComponentScan(basePackages={"com.ifunyoung"}) //扫描包路径
 @MapperScan(basePackages={"com.ifunyoung.dao"}) //扫描mapper
 public class AppStarter {
 

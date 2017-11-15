@@ -1,6 +1,5 @@
 package com.ifunyoung.controller;
 
-import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +24,7 @@ public class IndexController {
 	
 	@ResponseBody
 	@RequestMapping("/getUser")
-	public String getUser(@RequestParam("name")String username){
+	public String getUser(@RequestParam("name")String username, @RequestParam("age")Integer age){
 		return userService.getUser(username).toString();
 	}
 	
