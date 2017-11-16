@@ -77,3 +77,9 @@ springboot集成事务管理步骤：
 springboot集成ehcache报错，错误信息如下：
 No CacheResolver specified, and no bean of type CacheManager found. Register a CacheManager bean or remove the @EnableCaching annotation from your configuration.
 暂时未解决，待解决。
+问题已解决，添加了一个缓存配置类CacheConfiguration，并且缓存开启注解在这个类上。
+但是还有部分问题遗留：
+1.UserMapper类的注解@CachePut会将缓存更新为null,估计是因为mybatis的动态mapper实现类在update操作时无法返回user对象导致的问题。
+2.注解@CacheEvict可以正常清空缓存，没问题
+3.缓存注解@CachePut(value = DEMO_CACHE_NAME,key = "'userCache_'+#user.getId()") 里面的#user.getId(),user为null,导致启动报错
+@Cacheable(value=DEMO_CACHE_NAME,key="'userCache_'+#id")里面的#id,id为null，这个虽然启动不报错，但是缓存的key为null，也有问题
