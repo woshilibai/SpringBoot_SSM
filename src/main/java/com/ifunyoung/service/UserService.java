@@ -9,4 +9,6 @@ public interface UserService {
 	User getUser(String username);
 
 	void addUserTransaction(User user);
+
+	void sendSMS();
 }

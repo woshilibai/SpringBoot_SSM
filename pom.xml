@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ifunyoung.springboot</groupId>
-	<artifactId>ssm_first</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>git_springboot</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
 
 	<!-- springboot父引用 -->
 	<parent>

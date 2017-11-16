@@ -1,6 +1,7 @@
 package com.ifunyoung.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,12 @@ public class UserServiceImpl implements UserService {
 
 	public User getUser(String username) {
 		return userMapper.queryUser(username);
+	}
+
+	@Async //表示该方法为异步方法，即开启子线程执行该方法
+	@Override
+	public void sendSMS() {
+		System.out.println("==============2============");
 	}
 
 }

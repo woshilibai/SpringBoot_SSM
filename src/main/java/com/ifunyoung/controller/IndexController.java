@@ -1,6 +1,7 @@
 package com.ifunyoung.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,13 @@ public class IndexController {
 	
 	@Autowired
 	private UserService userService;
+	
+	//获取系统自定义参数
+	@Value("${SYSTEM.APPLICATION.URL}")
+	private String applicationUrl;
+	
+	@Value("${SYSTEM.CURRENT.ENVIROMENT}")
+	private String currEnviroment;
 
 	@ResponseBody
 	@RequestMapping("/home")
@@ -49,6 +57,30 @@ public class IndexController {
 	public String exceptionTest(){
 		int i = 1/0;
 		return "success";
+	}
+	
+	//多线程使用
+	@ResponseBody
+	@RequestMapping("/sendSMS")
+	public String sendSMS(){
+		System.out.println("==============1============");
+		userService.sendSMS();
+		System.out.println("==============3============");
+		return "success";
+	}
+	
+	//获取系统自定义参数
+	@RequestMapping("/getSysParam")
+	@ResponseBody
+	public String getSysParam(){
+		return applicationUrl;
+	}
+	
+	//获取系统自定义参数
+	@RequestMapping("/getCurrEnviroment")
+	@ResponseBody
+	public String getCurrEnviroment(){
+		return currEnviroment;
 	}
 	
 //	public static void main(String[] args) {

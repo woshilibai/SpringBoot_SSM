@@ -11,7 +11,14 @@ spring:
     username: root
     password: root
  
+#指定当前激活的环境配置文件
+  profiles: 
+    active: dev
+ 
 #mybatis配置
 mybatis:
   mapperLocations: classpath*:mybatis/*.xml
   typeAliasesPackage: com.ifunyoung
+  
+#获取系统自定义参数
+SYSTEM.APPLICATION.URL: www.baidu.com
