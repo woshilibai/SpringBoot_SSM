@@ -7,7 +7,7 @@ public class User {
 	private Integer age;
 
 	
-	private User(Integer id, String username, Integer age) {
+	public User(Integer id, String username, Integer age) {
 		super();
 		this.id = id;
 		this.username = username;

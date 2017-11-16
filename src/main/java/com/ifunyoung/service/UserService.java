@@ -6,9 +6,13 @@ public interface UserService {
 	
 	void addUser(User user);
 
-	User getUser(String username);
+	User getUser(Integer id);
 
 	void addUserTransaction(User user);
 
 	void sendSMS();
+	
+	void updateUser(User user);
+	
+	void removeUser(Integer id);
 }

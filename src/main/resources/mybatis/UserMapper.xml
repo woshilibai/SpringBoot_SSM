@@ -3,11 +3,26 @@
 <mapper namespace="com.ifunyoung.dao.UserMapper" >
 
     <select id="queryUser"  resultType="User">
-        SELECT * FROM USER WHERE username = #{username}
+        SELECT * FROM USER WHERE id = #{id}
     </select>
     
     <insert id="addUser" parameterType="User">
     	INSERT INTO USER(username,age) values(#{username},#{age})
     </insert>
+
+	<update id="updateUser" parameterType="User" >
+		UPDATE USER 
+		<set>
+			<!-- 除了最后一个set条件可以不写","外，其他全部要写，多余的逗号，mybatis会自动处理掉 -->
+			<if test="username != null">username = #{username},</if>
+			<if test="age != null">age = #{age}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteUser">
+		DELETE FROM USER
+		where id = #{id}
+	</delete>
 
 </mapper>

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2017-11-15 下午2:36:55 
  *
  */
-//@ControllerAdvice //定义异常拦截切面
+//@ControllerAdvice //定义异常拦截切面,注释掉是为了方便调试查看异常信息
 public class GlobalExceptionHandler {
 
 	@ResponseBody //表示拦截所有返回结果是json类型的返回

@@ -1,6 +1,9 @@
 package com.ifunyoung.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,14 +30,24 @@ public class UserServiceImpl implements UserService {
 		int i = 1 / 0;
 	}
 
-	public User getUser(String username) {
-		return userMapper.queryUser(username);
+	public User getUser(Integer id) {
+		return userMapper.queryUser(id);
 	}
 
 	@Async //表示该方法为异步方法，即开启子线程执行该方法
 	@Override
 	public void sendSMS() {
 		System.out.println("==============2============");
+	}
+
+	@Override
+	public void updateUser(User user) {
+		userMapper.updateUser(user);
+	}
+
+	@Override
+	public void removeUser(Integer id) {
+		userMapper.deleteUser(id);
 	}
 
 }
