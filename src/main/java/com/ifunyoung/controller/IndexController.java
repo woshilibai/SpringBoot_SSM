@@ -68,15 +68,24 @@ public class IndexController {
 		Cache cache = cacheManager.getCache("baseCache");  
         //根据缓存的key获取缓存
 		List<String> keys = cache.getKeys();
-		Element keyCache = null;
+		User user = null;
 		for(String key:keys){
-			//获取指定key的缓存
-			if(key.equals("userCache_" + id)){
-				keyCache = cache.get(key);
+			
+			logger.info("缓存内容: " + key + " = " + cache.get(key).getObjectValue().toString());
+			
+			if (id != null) {//请求携带参数id
+				//获取指定key的缓存
+				if(key.equals("userCache_" + id)){
+					//如果用getValue(),则user必须实现Serializable接口，即可序列化，所以建议用getObjectValue()
+//					user = (User) cache.get(key).getValue();
+					user = (User) cache.get(key).getObjectValue();
+				}
 			}
-			logger.info("缓存内容: " + key + " = " + cache.get(key).toString());
 		}
-		return keyCache.toString();
+		if (user != null) {
+			return user.toString();
+		}
+		return "请查找指定id的缓存或者该id对应key的缓存不存在";
 	}
 	
 	/**

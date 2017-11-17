@@ -87,3 +87,8 @@ No CacheResolver specified, and no bean of type CacheManager found. Register a C
 2.注解@CacheEvict可以正常清空缓存，没问题
 3.缓存注解@CachePut(value = DEMO_CACHE_NAME,key = "'userCache_'+#user.getId()") 里面的#user.getId(),user为null,导致启动报错
 @Cacheable(value=DEMO_CACHE_NAME,key="'userCache_'+#id")里面的#id,id为null，这个虽然启动不报错，但是缓存的key为null，也有问题
+
+上面的问题解决如下：
+1.未解决，但是可以肯定是方法返回值的问题导致，因为我验证分别将返回值修改为void和int后，结果果然是将null或者1更新到缓存里。
+  但是mybatis目前只能识别返回值为int或者void，不能为user，否则会报错，提示不能识别返回类型。
+3.#参数名方式改为#pIndex方式，这是一个坑，注意。
