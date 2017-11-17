@@ -92,3 +92,11 @@ No CacheResolver specified, and no bean of type CacheManager found. Register a C
 1.未解决，但是可以肯定是方法返回值的问题导致，因为我验证分别将返回值修改为void和int后，结果果然是将null或者1更新到缓存里。
   但是mybatis目前只能识别返回值为int或者void，不能为user，否则会报错，提示不能识别返回类型。
 3.#参数名方式改为#pIndex方式，这是一个坑，注意。
+
+==================================================================================================================
+
+springboot整合spring jdbc
+1.pom引入sping-jdbc依赖
+2.UserSpringDao添加注解 @Repository
+3.service添加 @Service注解，该项目中service有两套，一套是mybatis的，一套是整合spring jdbc的，为了便于比对，所以都保留了下来
+4.整合spring jdbc的ehcache使用完全正常，可以正常缓存，实时更新结果到缓存以及清空缓存，对比mybatis的不能正常实时更新缓存（更新的value为null），再次验证了是方法返回值导致的问题。

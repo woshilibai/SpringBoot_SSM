@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ifunyoung.model.User;
 import com.ifunyoung.service.UserService;
+import com.ifunyoung.service.UserSpringService;
 
 
 @Controller
@@ -25,8 +26,11 @@ public class IndexController {
 	
 	private static final Logger logger  = LoggerFactory.getLogger(IndexController.class);
 	
+//	@Autowired
+//	private UserService userService;
+	
 	@Autowired
-	private UserService userService;
+	private UserSpringService userSpringService;
 	
 	@Autowired //自动注入缓存管理器
 	private CacheManager cacheManager;
@@ -47,14 +51,16 @@ public class IndexController {
 	@ResponseBody
 	@RequestMapping("/getUser")
 	public String getUser(@RequestParam("id")Integer id){
-		return userService.getUser(id).toString();
+		return userSpringService.getUser(id).toString();
+//		return userService.getUser(id).toString();
 	}
 	
 	@ResponseBody
 	@RequestMapping("/addUser")
 	public String addUser(@RequestParam("name")String username, @RequestParam("age")Integer age){
 		User user = new User(username, age);
-		userService.addUser(user);
+//		userService.addUser(user);
+		userSpringService.addUser(user);
 		return "ok!!!!";
 	}
 	
@@ -104,7 +110,8 @@ public class IndexController {
 				@RequestParam(value="name",required=false)String username, 
 				@RequestParam(value="age" ,required=false)Integer age){
 		User user = new User(id, username, age);
-		userService.updateUser(user);
+//		userService.updateUser(user);
+		userSpringService.updateUser(user);
 //		logger.info("after update user : " + user.toString());
 		return "ok!!!!";
 	}
@@ -112,7 +119,8 @@ public class IndexController {
 	@ResponseBody
 	@RequestMapping("/deleteUser")
 	public String deleteUser(@RequestParam("id")Integer id){
-		userService.removeUser(id);
+//		userService.removeUser(id);
+		userSpringService.removeUser(id);
 		return "ok!!!!";
 	}
 	
@@ -120,7 +128,8 @@ public class IndexController {
 	@RequestMapping("/addUserTransaction") //添加事务管理
 	public String addUserTransaction(@RequestParam("name")String username, @RequestParam("age")Integer age){
 		User user = new User(username, age);
-		userService.addUserTransaction(user);
+//		userService.addUserTransaction(user);
+		userSpringService.addUserTransaction(user);
 		return "ok!!!!";
 	}
 	
@@ -136,7 +145,8 @@ public class IndexController {
 	@RequestMapping("/sendSMS")
 	public String sendSMS(){
 		System.out.println("==============1============");
-		userService.sendSMS();
+//		userService.sendSMS();
+		userSpringService.sendSMS();
 		System.out.println("==============3============");
 		return "success";
 	}
